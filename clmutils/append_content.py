@@ -21,12 +21,12 @@ def append_content(
     Create the file if it does not exist.
     """
     # unticipate people from another world
-    pattern = re.compile(r"\$home|%userprofile%?", re.IGNORECASE)
+    patt = re.compile(r"\$home|%userprofile%?", re.IGNORECASE)
     if isinstance(dest, str):
-        dest = pattern.sub("~", dest)
+        dest = patt.sub("~", dest)
     else:
         _ = dest.__str__()
-        dest = pattern.sub("~", _)
+        dest = patt.sub("~", _)
     dest = Path(dest).expanduser().resolve()
 
     if not dest.exists():

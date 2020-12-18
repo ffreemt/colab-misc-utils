@@ -12,7 +12,6 @@ from logzero import logger
 def create_file(
         content: str = "",
         dest: Union[Path, str] = Path("~/.ssh/gh-key").expanduser(),
-        mode: Optional[Union[str, int]] = None,
         overwrite: bool = False,
 ) -> Optional[Path]:
     # fmt: on
@@ -30,9 +29,9 @@ def create_file(
     dest = Path(dest).expanduser().resolve()
 
     if dest.exists() and overwrite is False:
-        logger.warning(" %s exists and overwrite set to False", dest)
+        logger.warning(" %s exists and overwrite set to %s", dest, overwrite)
         logger.warning("Will not proceed")
-        return None
+        return dest
     p_dir = dest.parent
 
     try:

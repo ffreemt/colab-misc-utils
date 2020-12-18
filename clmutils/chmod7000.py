@@ -9,8 +9,7 @@ def chmod600(
         fpath: Union[str, Path] = Path("~/.ssh/id_rsa").expanduser(),
         mode: int = 0o600,
 ) -> bool:
-    """
-    Chmod 600.
+    """Chmod 600.
 
     Can set to other mode, e.g. chmod600(mode=0o666)
     """

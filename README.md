@@ -32,7 +32,7 @@ Host github.com
 """
 append_content(config_github_entry, dest="~/.ssh/config")
 ```
-Verify that everything is OK
+Verify that everything is OK, from a cell
 ```ipynb
 !ssh -T git@github.com
 ```

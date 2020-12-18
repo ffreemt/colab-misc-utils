@@ -24,12 +24,12 @@ create_file(gh_key, dest="~/.ssh/gh-key")
 ```python
 from clutiuls import append_content
 config_github_entry = \
-'''
+"""
 Host github.com
    HostName github.com
    User git
    IdentityFile ~/.ssh/gh-key
-'''
+"""
 append_content(config_github_entry, dest="~/.ssh/config")
 ```
 Verify that everything is OK

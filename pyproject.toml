@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "clmutils"
-version = "0.1.0"
+version = "0.1.1"
 description = "colab miscellaneous utils"
 authors = ["ffreemt"]
 readme = "README.md"

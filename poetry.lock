@@ -210,8 +210,8 @@ docs = ["sphinx", "jaraco.packaging (>=3.2)", "rst.linker (>=1.9)"]
 testing = ["pytest (>=3.5,<3.7.3 || >3.7.3)", "pytest-checkdocs (>=1.2.3)", "pytest-flake8", "pytest-cov", "jaraco.test (>=3.2.0)", "jaraco.itertools", "func-timeout", "pytest-black (>=0.3.7)", "pytest-mypy"]
 
 [metadata]
-content-hash = "9289352dd2053358bda86fc4ee3e9953c48362e39704cef68bc0a475e9ae02a6"
-python-versions = "^3.7"
+content-hash = "e1df4b87d35bc386036b8b463ce4501c38b648a3162df4b561d1343b994c35cd"
+python-versions = "^3.6.1"
 
 [metadata.files]
 atomicwrites = [

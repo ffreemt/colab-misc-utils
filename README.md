@@ -20,7 +20,7 @@ K9ztlJBRRAOHh5sPhQ4QpdZH1v1rWeDWIQ==
 """
 create_file(gh_key, dest="~/.ssh/gh-key")
 ```
-### Set up `github.com` config
+### Set up `github.com` config for `git push`
 ```python
 from clutiuls import append_content
 config_github_entry = \
@@ -40,7 +40,7 @@ If you see something similar to
 ```bash
 Hi your-name! You've successfully authenticated, but GitHub does not provide shell access.
 ```
-you are good to go. 
+you are good to go.
 
 You can now set up `git config global` from a cell, e.g.
 ```ipynb
@@ -50,7 +50,7 @@ You can now set up `git config global` from a cell, e.g.
 ```
 You can now clone your own repo, run your app and generate new data, update the repo and push to `github`.
 
-Utils planned
+## Utils planned
 *  `create_file`
   creates a file with given mode, e.g. for `.ssh/id_rsa` or `IdentityFile` in `.ssh/config`
 

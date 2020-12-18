@@ -15,7 +15,8 @@ def create_file(
         overwrite: bool = False,
 ) -> Optional[Path]:
     # fmt: on
-    """Create a file if it does not exist.
+    """
+    Create a file if it does not exist.
 
     Overwrite existing file only if set to True.
     """

@@ -16,7 +16,8 @@ def append_content(
         dest: Union[Path, str] = Path("~/.ssh/authorized_keys").expanduser(),
 ) -> Optional[Path]:
     # fmt: on
-    """Append content to a file.
+    """
+    Append content to a file.
 
     Create the file if it does not exist.
     """

@@ -48,7 +48,7 @@ You can now set up `git config global` from a cell, e.g.
 !git config --global user.name your-github-username
 !ssh-keyscan github.com >> ~/.ssh/known_hosts
 ```
-You can now clone your own repo, run your app and generate new data, update the repo and push to `github`.
+You are ready to clone your own repo, run your app and generate new data, update the repo and push to `github`.
 
 ## Utils planned
 *  `create_file`

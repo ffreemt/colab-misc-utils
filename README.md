@@ -5,7 +5,7 @@ Utils planned
 *  `create_file`
   creates a file with given mode, e.g. for `.ssh/id_rsa` or `IdentityFile` in `.ssh/config`
 
-*  `apppend_content
+*  `apppend_content`
  appends some content to a file, e.g., for appended a public key to `.ssh/authorized_keys`
 
 *  `chmod600`

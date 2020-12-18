@@ -8,7 +8,7 @@ Utils planned
 *  `apppend_content
  appends some content to a file, e.g., for appended a public key to `.ssh/authorized_keys`
 
-*  `chmod600` 
+*  `chmod600`
    `chmod` of a file
 
 *  reverse_ssh_tunnel

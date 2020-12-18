@@ -9,7 +9,7 @@ pip install clmutils  # clm: colab-misc
 ## Usage
 ### Write a private key to `~/.ssh/gh-key`
 ```python
-from clutiuls import create_file
+from clmutils import create_file
 gh_key = \
 """
 -----BEGIN EC PRIVATE KEY-----
@@ -22,7 +22,7 @@ create_file(gh_key, dest="~/.ssh/gh-key")
 ```
 ### Set up `github.com` config for `git push`
 ```python
-from clutiuls import append_content
+from clmutils import append_content
 config_github_entry = \
 """
 Host github.com

@@ -7,7 +7,7 @@ readme = "README.md"
 repository = "https://github.com/ffreemt/colab-misc-utils"
 
 [tool.poetry.dependencies]
-python = "^3.7"
+python = "^3.6.1"
 logzero = "^1.6.3"
 
 [tool.poetry.dev-dependencies]

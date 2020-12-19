@@ -39,7 +39,7 @@ append_content(config_github_entry, dest="~/.ssh/config")
 ```
 Verify that everything is OK, from a cell
 ```ipynb
-!ssh -T git@github.com
+!ssh -o StrictHostKeyChecking=no -T git@github.com 
 ```
 If you see something similar to
 ```bash
@@ -51,7 +51,7 @@ You can now set up `git config global` from a cell, e.g.
 ```ipynb
 !git config --global user.email your-email-address
 !git config --global user.name your-github-username
-!ssh-keyscan github.com >> ~/.ssh/known_hosts
+# !ssh-keyscan github.com >> ~/.ssh/known_hosts
 ```
 You are ready to clone your own repo, run your app and generate new data, update the repo and push to `github`.
 

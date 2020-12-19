@@ -7,18 +7,22 @@ import re
 # import subprocess as sp  # noqa: F401
 from logzero import logger
 
+from clmutils import chomd600
+
 
 # fmt: off
 def create_file(
         content: str = "",
         dest: Union[Path, str] = Path("~/.ssh/gh-key").expanduser(),
         overwrite: bool = False,
+        setmode: bool = False,
 ) -> Optional[Path]:
     # fmt: on
     """
     Create a file if it does not exist.
 
     Overwrite existing file only if set to True.
+    Set mode to 600 if setmode is True (default false)
     """
     # unticipate people from another world
     pattern = re.compile(r"\$home|%userprofile%?", re.IGNORECASE)
@@ -47,5 +51,8 @@ def create_file(
     except Exception as exc:
         logger.error("dest.write_text exc: %s", exc)
         return None
-
+    
+    if setmode:
+        chmod600(dest)
+    
     return dest

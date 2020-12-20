@@ -5,10 +5,12 @@ from pathlib import Path
 from logzero import logger
 
 
+# fmt: off
 def chmod600(
         fpath: Union[str, Path] = Path("~/.ssh/id_rsa").expanduser(),
         mode: int = 0o600,
 ) -> bool:
+    # fmt: on
     """Chmod 600.
 
     Can set to other mode, e.g. chmod600(mode=0o666)

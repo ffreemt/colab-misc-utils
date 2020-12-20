@@ -3,6 +3,7 @@ from typing import Optional, Union
 
 from pathlib import Path
 import re
+
 # import subprocess as sp  # noqa: F401
 import chardet
 from logzero import logger

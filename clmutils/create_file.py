@@ -7,7 +7,7 @@ import re
 # import subprocess as sp  # noqa: F401
 from logzero import logger
 
-from clmutils import chomd600
+from clmutils import chmod600
 
 
 # fmt: off
@@ -51,8 +51,8 @@ def create_file(
     except Exception as exc:
         logger.error("dest.write_text exc: %s", exc)
         return None
-    
+
     if setmode:
         chmod600(dest)
-    
+
     return dest

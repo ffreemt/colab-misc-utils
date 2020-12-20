@@ -56,13 +56,13 @@ You can now set up `git config global` from a cell, e.g.
 You are ready to clone your own repo, run your app and generate new data, update the repo and push to `github`.
 
 ## Utils planned
-*  `create_file`
+* :white_check_mark: `create_file`
   creates a file with given mode, e.g. for `.ssh/id_rsa` or `IdentityFile` in `.ssh/config`
 
-*  `apppend_content`
+* :white_check_mark: `apppend_content`
  appends some content to a file, e.g., for appended a public key to `.ssh/authorized_keys`
 
-*  `chmod600`
+* :white_check_mark: `chmod600`
    `chmod` of a file
 
 *  `reverse_ssh_tunnel`

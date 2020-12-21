@@ -58,8 +58,9 @@ def gen_keypair(
                 return ""
             return pub_key
 
-        cmd = f"""ssh-keygen -f {dest_str} -y"""
+        cmd = f"ssh-keygen -f {dest_str} -y"
         try:
+            logger.info("cmd: %s", cmd)
             pub_key = run_cmd(cmd)
         except Exception as exc:
             logger.error("run_cmd(%s) exc: %s", cmd, exc)
@@ -73,6 +74,7 @@ def gen_keypair(
 
     cmd = f"ssh-keygen -t {keytype} -f {dest_str} -N '' -C 'colab-key' "
     try:
+        logger.info("cmd: %s", cmd)
         run_cmd(cmd)
     except Exception as exc:
         logger.error("%s exc: %s ", cmd, exc)

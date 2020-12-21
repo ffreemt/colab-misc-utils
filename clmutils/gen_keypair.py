@@ -25,15 +25,27 @@ def gen_keypair(
 
     return pub
     """
+    try:
+        keytype = str(keytype).lower().strip()
+    except Exception as exc:
+        logger.error("str*keytype) exc: %s", exc)
+        keytype = "rsa"
 
     if keytype not in ["dsa", "ecdsa", "ed25519", "rsa"]:
         keytype = "rsa"
 
     if dest is None:
         dest = f"~/.ssh/id_{keytype}"
+    try:
+        dest = Path(dest).expanduser().resolve()
+    except Exception as exc:
+        logger.error("Path(dest).expanduser().resolve() exc: %s", exc)
+        dest = f"~/.ssh/id_{keytype}"
+        dest = Path(dest).expanduser().resolve()
 
-    dest = Path(dest).expanduser().resolve()
     dest_pub = Path(f"{dest}.pub")
+
+    dest_str = dest.as_posix().__str__()
 
     if Path(dest).exists():
         logger.warning(" %s already exists", dest)
@@ -46,7 +58,7 @@ def gen_keypair(
                 return ""
             return pub_key
 
-        cmd = f"ssh-keygen -f {dest.as_posix()} -y"
+        cmd = f"""ssh-keygen -f {dest_str} -y"""
         try:
             pub_key = run_cmd(cmd)
         except Exception as exc:
@@ -55,7 +67,7 @@ def gen_keypair(
         return "" if pub_key is None else pub_key
         # return pub_key or ""
 
-    cmd = f"ssh-keygen -t {keytype} -f {dest.as_posix()} -N -C'colab-key'"
+    cmd = f"ssh-keygen -t {keytype} -f {dest_str} -N -C'colab-key'"
     try:
         run_cmd(cmd)
     except Exception as exc:

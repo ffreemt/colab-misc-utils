@@ -1,1 +1,1 @@
-"""Init."""
+"""Check runtime errors."""

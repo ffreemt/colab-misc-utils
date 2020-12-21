@@ -27,6 +27,11 @@ def gen_keypair(
     """
     if dest is None:
         dest = Path(f"~/.ssh/id_{keytype}").expanduser().resolve()
+        cmd = f"""ssh-keygen -t {keytype} -N"" -C"colab-key" """
+    else:
+        dest = Path(f"~/.ssh/id_{keytype}").expanduser().resolve()
+        cmd = f"""ssh-keygen -t {keytype} -f {dest.as_posix()} -N"" -C"colab-key" """
+
     if keytype not in ["dsa", "ecdsa", "ed25519", "rsa"]:
         keytype = "rsa"
 
@@ -53,7 +58,6 @@ def gen_keypair(
         return "" if pub_key is None else pub_key
         # return pub_key or ""
 
-    cmd = f"""ssh-keygen -t {keytype} -f {dest}" -N"" -C"colab-key" """
     try:
         run_cmd(cmd)
     except Exception as exc:

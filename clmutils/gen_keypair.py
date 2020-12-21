@@ -71,7 +71,7 @@ def gen_keypair(
 
         # return pub_key or ""
 
-    cmd = f"ssh-keygen -t {keytype} -f {dest_str} -N -C'colab-key'"
+    cmd = f"ssh-keygen -t {keytype} -f {dest_str} -N '' -C 'colab-key' "
     try:
         run_cmd(cmd)
     except Exception as exc:

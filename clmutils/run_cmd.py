@@ -24,5 +24,6 @@ def run_cmd(cmd: Union[str, List[str]]) -> Union[str, bool]:
         return _
     except Exception as exc:
         # logger.exception(exc)
-        logger.error(exc)
+        logger.info("%s", " ".join(cmd))
+        logger.error("\n%s", exc)
         return False

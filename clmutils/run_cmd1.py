@@ -28,6 +28,6 @@ def run_cmd1(
     )
     # fmt: on
     out, err = proc.communicate(inp)
-    logger.info("%s...\n%s", cmd, out)
+    logger.info("%s...\n%s", " ".join(cmd), out)
     if err:
         logger.error("%s,", err)

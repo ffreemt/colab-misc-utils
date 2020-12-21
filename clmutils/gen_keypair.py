@@ -26,9 +26,11 @@ def gen_keypair(
     return pub
     """
 
-
     if keytype not in ["dsa", "ecdsa", "ed25519", "rsa"]:
         keytype = "rsa"
+
+    if dest is None:
+        dest = f"~/.ssh/id_{keytype}"
 
     dest = Path(dest).expanduser().resolve()
     dest_pub = Path(f"{dest}.pub")
@@ -48,7 +50,7 @@ def gen_keypair(
         try:
             pub_key = run_cmd(cmd)
         except Exception as exc:
-            logger.error(f"run_cmd(%s) exc: %s", cmd, exc)
+            logger.error("run_cmd(%s) exc: %s", cmd, exc)
             return ""
         return "" if pub_key is None else pub_key
         # return pub_key or ""

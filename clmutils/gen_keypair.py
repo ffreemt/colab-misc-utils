@@ -52,7 +52,7 @@ def gen_keypair(
         logger.info("We try to retrieve the corresponding public key")
         if dest_pub.exists():
             try:
-                pub_key = dest_pub.read_text("utf8")
+                pub_key = dest_pub.read_text("utf8").strip()
             except Exception as exc:
                 logger.error(" dest_pub.read_text exc: %s", exc)
                 return ""
@@ -64,7 +64,11 @@ def gen_keypair(
         except Exception as exc:
             logger.error("run_cmd(%s) exc: %s", cmd, exc)
             return ""
+
+        if isinstance(pub_key, str):
+            pub_key = pub_key.strip()
         return "" if pub_key is None else pub_key
+
         # return pub_key or ""
 
     cmd = f"ssh-keygen -t {keytype} -f {dest_str} -N -C'colab-key'"
@@ -79,4 +83,7 @@ def gen_keypair(
     except Exception as exc:
         logger.error("dest_pub.read_text exc: %s", exc)
         pub_key = ""
+
+    if isinstance(pub_key, str):
+        pub_key = pub_key.strip()
     return pub_key

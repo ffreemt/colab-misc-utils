@@ -7,7 +7,7 @@ import re
 # import subprocess as sp  # noqa: F401
 from logzero import logger
 
-from clmutils import chmod600
+from .chmod600 import chmod600
 
 
 # fmt: off
@@ -15,7 +15,7 @@ def create_file(
         content: str = "",
         dest: Union[Path, str] = Path("~/.ssh/gh-key").expanduser(),
         overwrite: bool = False,
-        setmode: bool = False,
+        setmode: bool = False,  # if True, chmode600
 ) -> Optional[Path]:
     # fmt: on
     """

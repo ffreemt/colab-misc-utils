@@ -1,5 +1,5 @@
 """Execute cmd via subprocess.Popen."""
-from typing import Optional, Union
+from typing import Optional, Tuple, Union
 
 import shlex
 import subprocess as sp
@@ -10,7 +10,8 @@ from logzero import logger
 def run_cmd1(
         cmd: Union[str, list],
         inp: Optional[str] = None,
-) -> Optional[str]:
+        shell: bool = False,
+) -> Tuple[Optional[str], Optional[str]]:
     # fmt: on
     """Execute cmd via subprocess.Popen.
 
@@ -25,9 +26,11 @@ def run_cmd1(
         stdout=sp.PIPE,
         stderr=sp.PIPE,
         encoding="utf8",
+        shell=shell,
     )
     # fmt: on
     out, err = proc.communicate(inp)
     logger.info("%s...\n%s", " ".join(cmd), out)
     if err:
         logger.error("%s,", err)
+    return out, err

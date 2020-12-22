@@ -14,14 +14,15 @@ pip install clmutils  # clm: colab-misc
 ```python
 from clmutils import create_file
 gh_key = \
-"""-----BEGIN EC PRIVATE KEY-----
+"""
+-----BEGIN EC PRIVATE KEY-----
 MH.............................................................9
 AwEHoUQDQgAEoLlGQRzIVHYw3gvC/QFw3Ru45zGawaBaCq6jTqdyH2Kp8zIB3TdJ
 K9ztlJBRRAOHh5sPhQ4QpdZH1v1rWeDWIQ==
 -----END EC PRIVATE KEY-----
-"""
-# do not start a new line with the first line -----BEGIN
-# if you do, it will not work (invalid private key file)
+""".strip() + "\n"
+# Do not remove .strip() + "\n"
+# the private key is very picky about formt
 
 create_file(gh_key, dest="~/.ssh/gh-key")
 ```

@@ -22,7 +22,7 @@ K9ztlJBRRAOHh5sPhQ4QpdZH1v1rWeDWIQ==
 -----END EC PRIVATE KEY-----
 """.strip() + "\n"
 # Do not remove .strip() + "\n"
-# the private key is very picky about formt
+# the private key is very picky about format
 
 create_file(gh_key, dest="~/.ssh/gh-key")
 ```

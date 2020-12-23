@@ -3,10 +3,11 @@ Miscellaneous utils mainly intended for use in colab
 
 ## Demo: notebooks in Colab
 ### `git push` from Colab
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1n0agOGg8rBoR0Ld3WAvh20QzXeZZ7xCk?usp=sharing) (in Chinese, shouldn't be too difficult to follow without knowing any Chinese though, just click through :smiley:)
+### Reverse ssh tunnel for ssh to Colab VM
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1n0agOGg8rBoR0Ld3WAvh20QzXeZZ7xCk?usp=sharing)
-### Set up a reverse ssh tunnel for ssh to Colab VM
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1CIstRNIZjKhMqCch-FRyoIoiFjGAOGii?usp=sharing)
 in English (I may provide a Chinese version later)
+
 
 
 ## Installation
@@ -45,7 +46,7 @@ append_content(config_github_entry, dest="~/.ssh/config")
 ```
 Verify that everything is OK, from a cell
 ```ipynb
-!ssh -o StrictHostKeyChecking=no -T git@github.com
+!ssh -o StrictHostKeyChecking=no -T git@github.com 
 ```
 If you see something similar to
 ```bash

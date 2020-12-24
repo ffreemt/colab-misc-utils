@@ -3,7 +3,7 @@
 Write to dest if provided, otherwise write to
 ~/.ssh/id_{keytype} and ~/.ssh/id_{keytype}.pub
 """
-from typing import Optional, Union
+from typing import Optional, Tuple, Union
 from pathlib import Path
 from logzero import logger
 
@@ -12,9 +12,9 @@ from .run_cmd import run_cmd
 
 # fmt: off
 def gen_keypair(
-        dest: Optional[Union[str, Path]] = None,
+        dest: Optional[Union[str, Path]] = None,  # default f"~/.ssh/id_{keytype}"
         keytype: str = "rsa",
-) -> Union[str, bool]:
+) -> Tuple[Union[str, bool], Union[str, Path]]:
     # fmt: on
     """Generae a keypair of keytype using ssh-keygen.
 
@@ -88,4 +88,4 @@ def gen_keypair(
 
     if isinstance(pub_key, str):
         pub_key = pub_key.strip()
-    return pub_key
+    return pub_key, dest

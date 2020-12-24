@@ -47,10 +47,10 @@ def setup_git(
         user_email: str = CLMUTISL_EMAIL,
         user_name: str = CLMUTISL_USER_NAME,
         priv_key: Union[str, Path] = CLMUTISL_PRIV_KEY,
-        identity_file: Union[str, Path] = "",
+        identity_file: Union[str, Path] = "",  # default f"~/.ssh/gh_{user_name}"
         set_global: bool = True,
         host: str = "github.com",
-        overwrite: bool = False,
+        overwrite: bool = False,  # do not overwrite identity_file
 ) -> Optional[str]:
     # fmt: on
     """
@@ -111,11 +111,10 @@ def setup_git(
         priv_key,
         identity_file,
         overwrite=overwrite,
-        setmode=True
+        setmode=True  # chmod 600
     )
 
     # set up an entry in ~/.ssh/config
-
     config_entry = f"""
 Host {host}
    HostName github.com

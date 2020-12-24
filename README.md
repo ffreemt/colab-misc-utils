@@ -16,7 +16,39 @@ pip install clmutils  # clm: colab-misc
 ```
 
 ## Usage
-### Write a private key to `~/.ssh/gh-key`
+
+### Set up `git` using `clmutils.setup_git`
+Assume you configure git as follows:
+```bash
+git config --global user.email your-email-address
+git config --global user.name your-github-username
+```
+
+With `clmutils`, you'd do:
+```python
+from clmutils import setup_git`
+
+user_email = "your-email-address"
+user_name = "your-github-username"
+gh_key = \
+"""
+-----BEGIN EC PRIVATE KEY-----
+MH.............................................................9
+AwEHoUQDQgAEoLlGQRzIVHYw3gvC/QFw3Ru45zGawaBaCq6jTqdyH2Kp8zIB3TdJ
+K9ztlJBRRAOHh5sPhQ4QpdZH1v1rWeDWIQ==
+-----END EC PRIVATE KEY-----
+""".strip() + "\n"
+
+setup_git(user_email=user_email, user_name=user_name, priv_key=gh_key)
+```
+You then upload the `public key` for `gh_key` to [https://github.com/settings/keys](https://github.com/settings/keys).
+
+Refer to Step 2 [https://support.cloudways.com/using-git-command-line-ssh/](https://support.cloudways.com/using-git-command-line-ssh/) for how to generate a private/public key pair. You can also use clmutils.gen_keypair to do that in Python.
+
+
+### Set up `git` in 4 steps
+
+1. Write a private key to `~/.ssh/gh-key`
 ```python
 from clmutils import create_file
 gh_key = \
@@ -32,7 +64,7 @@ K9ztlJBRRAOHh5sPhQ4QpdZH1v1rWeDWIQ==
 
 create_file(gh_key, dest="~/.ssh/gh-key")
 ```
-### Set up `github.com` config for `git push`
+2. Set up `github.com` config for `git push` 
 ```python
 from clmutils import append_content
 config_github_entry = \
@@ -44,9 +76,9 @@ Host github.com
 """
 append_content(config_github_entry, dest="~/.ssh/config")
 ```
-Verify that everything is OK, from a cell
+3. Verify that everything is OK, from a cell
 ```ipynb
-!ssh -o StrictHostKeyChecking=no -T git@github.com 
+!ssh -o StrictHostKeyChecking=no -T git@github.com
 ```
 If you see something similar to
 ```bash
@@ -54,6 +86,7 @@ Hi your-name! You've successfully authenticated, but GitHub does not provide she
 ```
 you are good to go.
 
+4. `git config --global`
 You can now set up `git config global` from a cell, e.g.
 ```ipynb
 !git config --global user.email your-email-address
@@ -63,6 +96,7 @@ You can now set up `git config global` from a cell, e.g.
 You are ready to clone your own repo, run your app and generate new data, update the repo and push to `github`.
 
 ## Utils planned
+* :white_check_mark: `setup_git` sets up `git` for `github.com`
 * :white_check_mark: `create_file`
   creates a file with given mode, e.g. for `.ssh/id_rsa` or `IdentityFile` in `.ssh/config`
 
@@ -71,6 +105,8 @@ You are ready to clone your own repo, run your app and generate new data, update
 
 * :white_check_mark: `chmod600`
    `chmod` of a file
+
+* :white_check_mark: `gen_keypair` generates private/public key pair.
 
 *  `reverse_ssh_tunnel`
  sets up a reverse ssh tunnel to a remote host with via autossh

@@ -147,6 +147,7 @@ Host {host}
             logger.debug(str(out_err))
             logger.info("\n\t Congrats! You are good to go. ")
         else:
+            out_err = run_cmd1("ssh -T git@github.com -o StrictHostKeyChecking=no -v")
             out = out_err[0] if isinstance(out_err[0], str) else ""
             err = out_err[1] if isinstance(out_err[1], str) else ""
             logger.debug(out + "\n" + err)

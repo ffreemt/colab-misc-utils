@@ -16,7 +16,7 @@ Host github-clmutils  # default github.com
    # IdentityFile ~/.ssh/id_aliyun
    IdentityFile ~/.ssh/clmutils_id_ed25519
 """
-# pylint: disable=too-many-arguments, too-many-locals
+# pylint: disable=too-many-arguments, too-many-locals, too-many-branches, too-many-statements
 from typing import Optional, Union
 
 from pathlib import Path
@@ -64,7 +64,7 @@ def setup_git(
     in a git directory to use a different git account
     """
     if isinstance(identity_file, str) and not identity_file.strip():  # default to f"gh_{user_name}"
-        identity_file = f"gh_{user_name}"
+        identity_file = f"~/.ssh/gh_{user_name}"
 
     def check(arg: str) -> str:
         try:
@@ -107,7 +107,12 @@ def setup_git(
         raise
 
     # create identity_file
-    create_file(priv_key, identity_file, overwrite=overwrite)
+    create_file(
+        priv_key,
+        identity_file,
+        overwrite=overwrite,
+        setmode=True
+    )
 
     # set up an entry in ~/.ssh/config
 
@@ -115,7 +120,7 @@ def setup_git(
 Host {host}
    HostName github.com
    User git
-   IdentityFile ~/.ssh/{identity_file_str}
+   IdentityFile {identity_file_str}
     """
 
     # check for duplicate
@@ -131,9 +136,11 @@ Host {host}
             raise
         if re.findall(rf"{identity_file_str}", _):
             entry_exits = True
-    # append if entry does not exist
-    if not entry_exits:
-        append_content(config_entry, identity_file)
+        # write to ~/.ssh/config if the entry does not already exist
+        if not entry_exits:
+            append_content(config_entry, "~/.ssh/config")
+    else:
+        append_content(config_entry, "~/.ssh/config")
 
     # set up git config --global if set_global is True
     if set_global:
@@ -147,10 +154,10 @@ Host {host}
             logger.debug(str(out_err))
             logger.info("\n\t Congrats! You are good to go. ")
         else:
-            out_err = run_cmd1("ssh -T git@github.com -o StrictHostKeyChecking=no -v")
-            out = out_err[0] if isinstance(out_err[0], str) else ""
-            err = out_err[1] if isinstance(out_err[1], str) else ""
-            logger.debug(out + "\n" + err)
+            # out_err = run_cmd1("ssh -T git@github.com -o StrictHostKeyChecking=no -v")
+            # out = out_err[0] if isinstance(out_err[0], str) else ""
+            # err = out_err[1] if isinstance(out_err[1], str) else ""
+            # logger.debug(out + "\n" + err)
             logger.warning(
                 "\n There appears to be some problem."
                 "\nYou may wish to exam the debug messages above, "

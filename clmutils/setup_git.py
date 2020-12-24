@@ -137,8 +137,8 @@ Host {host}
 
     # set up git config --global if set_global is True
     if set_global:
-        run_cmd(f"git config --global {user_email}")
-        run_cmd(f"git config --global {user_name}")
+        run_cmd(f"git config --global user.email {user_email}")
+        run_cmd(f"git config --global user.name {user_name}")
 
         # validate setup
         out_err = run_cmd1("ssh -T git@github.com -o StrictHostKeyChecking=no")
@@ -153,5 +153,5 @@ Host {host}
             logger.warning(
                 "\n There appears to be some problem."
                 "\nYou may wish to exam the debug messages above, "
-                "\nfix it and give another try."
+                "\nfix it and give it another try."
             )

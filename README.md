@@ -2,10 +2,22 @@
 Miscellaneous utils mainly intended for use in colab
 
 ## Demo: notebooks in Colab
-### `git push` from Colab
+
+### git push from Colab: one line (`setup_git()`)
+```
+!pip install clmutils
+from clmutils import setup_git
+gh_key = """..."""
+user_name = "..."
+user_email = "..."
+setup_git(setup_git(user_email=user_email, user_name=user_name, priv_key=gh_key)
+```
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1u-eNhJpG64ajP-fPO3jtSQzdlAMSxtwE?usp=sharing#scrollTo=svB7ci6VzLnl)
+
+### `git push` from Colab in several steps
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1n0agOGg8rBoR0Ld3WAvh20QzXeZZ7xCk?usp=sharing) (in Chinese, shouldn't be too difficult to follow without knowing any Chinese though, just click through :smiley:)
 ### Reverse ssh tunnel for ssh to Colab VM
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1n0agOGg8rBoR0Ld3WAvh20QzXeZZ7xCk?usp=sharing)
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1CIstRNIZjKhMqCch-FRyoIoiFjGAOGii?usp=sharing?usp=sharing)
 in English (I may provide a Chinese version later)
 
 
@@ -17,7 +29,11 @@ pip install clmutils  # clm: colab-misc
 
 ## Usage
 
-### Set up `git` using `clmutils.setup_git`
+### Set up `github` with ssh using `clmutils.setup_git`
+
+For manually setting up github with ssh, refer to
+[https://docs.github.com/en/free-pro-team@latest/github/authenticating-to-github/connecting-to-github-with-ssh](https://docs.github.com/en/free-pro-team@latest/github/authenticating-to-github/connecting-to-github-with-ssh)
+
 Assume you configure git as follows:
 ```bash
 git config --global user.email your-email-address
@@ -45,8 +61,7 @@ You then upload the `public key` for `gh_key` to [https://github.com/settings/ke
 
 Refer to Step 2 [https://support.cloudways.com/using-git-command-line-ssh/](https://support.cloudways.com/using-git-command-line-ssh/) for how to generate a private/public key pair. You can also use clmutils.gen_keypair to do that in Python.
 
-
-### Set up `git` in 4 steps
+### Alternatively, set up `github` with ssh in 4 steps
 
 1. Write a private key to `~/.ssh/gh-key`
 ```python
@@ -64,7 +79,7 @@ K9ztlJBRRAOHh5sPhQ4QpdZH1v1rWeDWIQ==
 
 create_file(gh_key, dest="~/.ssh/gh-key")
 ```
-2. Set up `github.com` config for `git push` 
+2. Set up `github.com` config for `git push`
 ```python
 from clmutils import append_content
 config_github_entry = \

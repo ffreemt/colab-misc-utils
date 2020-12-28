@@ -147,7 +147,7 @@ Host {host}
         run_cmd(f"git config --global user.name {user_name}")
 
         # validate setup
-        out_err = run_cmd1("ssh -T git@github.com -o StrictHostKeyChecking=no")
+        out_err = run_cmd1("ssh -T git@github.com -o StrictHostKeyChecking=yes")
 
         if "successfully authenticated" in str(out_err):
             logger.debug(str(out_err))

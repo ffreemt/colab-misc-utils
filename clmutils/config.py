@@ -18,7 +18,7 @@ class Settings(BaseSettings):
     class Config:
         """Setting config."""
 
-        _ = "/conten/drive/Mydrive/dotenv"
+        _ = "/content/drive/Mydrive/dotenv"
         # in colab, if google drive mounted
         if "google.colab" in sys.modules and Path(_).is_file():
             env_file = _

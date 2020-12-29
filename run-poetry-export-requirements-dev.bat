@@ -1,1 +1,1 @@
-poetry export --without-hashes --dev -f requirements-dev.txt -o requirements.txt
+poetry export --without-hashes --dev -f requirements.txt -o requirements-dev.txt

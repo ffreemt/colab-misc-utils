@@ -1,2 +1,7 @@
+chardet==4.0.0
 colorama==0.4.4; sys_platform == "win32"
+dataclasses==0.6; python_version < "3.7"
 logzero==1.6.3
+psutil==5.8.0
+pydantic==1.7.3
+python-dotenv==0.15.0

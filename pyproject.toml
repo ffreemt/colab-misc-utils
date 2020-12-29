@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "clmutils"
-version = "0.1.3"
+version = "0.1.4"
 description = "colab miscellaneous utils"
 authors = ["ffreemt"]
 readme = "README.md"
@@ -9,6 +9,9 @@ repository = "https://github.com/ffreemt/colab-misc-utils"
 [tool.poetry.dependencies]
 python = "^3.6.1"
 logzero = "^1.6.3"
+chardet = "^4.0.0"
+psutil = "^5.8.0"
+pydantic = {extras = ["dotenv"], version = "^1.7.3"}
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"

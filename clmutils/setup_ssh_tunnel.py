@@ -18,6 +18,8 @@ from logzero import logger
 from clmutils.create_file import create_file
 from clmutils.chmod600 import chmod600
 from clmutils.append_content import append_content
+from clmutils.run_cmd import run_cmd
+from clmutils.run_cmd1 import run_cmd1
 
 
 # fmt: off
@@ -29,9 +31,10 @@ def setup_ssh_tunnel(
         local_user: str = "root",
         priv_key_file: Union[str, Path] = "~/.ssh/id_ed25519",
         overwrite: bool = False,
-):
+) -> None:
     # fmt: on
     """Set up ssh tunnel."""
+    remote_ip = remote_host
     # authorized_keys
     try:
         remote_pubkey = remote_pubkey.strip() + "\n"
@@ -75,8 +78,8 @@ def setup_ssh_tunnel(
     if err:
         logger.warning("Colab->remote ssh Not properly setup: %s", err)
         raise SystemExit(1)
-    else:
-        logger.info(" Looks good, able to connect: %s" out)
+
+    logger.info("Looks good, able to connect: %s", out)
 
     # Install sshd/autossh and start sshd services
     run_cmd("apt install openssh-server")
@@ -103,4 +106,3 @@ Host colab
     logger.info("In the remote computer, issue this command:\nssh colab")
 
     logger.info(" Enjoy! ")
-

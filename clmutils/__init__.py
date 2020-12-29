@@ -8,7 +8,7 @@ from .gen_keypair import gen_keypair  # noqa: F401
 from .setup_git import setup_git  # noqa: F401
 from .setup_ssh_tunnel import setup_ssh_tunnel  # noqa: F401
 from .check_running import check_running  # noqa: F401
-from .config import config  # noqa: F401
+from .config import Settings  # noqa: F401
 
 __version__ = "0.1.4"
 
@@ -22,5 +22,5 @@ __all__ = (
     "setup_git",
     "setup_ssh_tunnel",
     "checking_running",
-    "config",
+    "Settings",
 )

@@ -71,7 +71,11 @@ def setup_ssh_tunnel(
 
     # testing setup
     # !ssh -T ubuntu@{remote_ip} -o StrictHostKeyChecking=no hostname
-    out, err = run_cmd1(f"ssh ubuntu@{remote_ip} -o StrictHostKeyChecking=no hostname")
+
+    # try once, update ~/.ssh/known_hosts
+    out, err = run_cmd1(f"ssh -T ubuntu@{remote_ip} -o StrictHostKeyChecking=no hostname")
+
+    out, err = run_cmd1(f"ssh -T ubuntu@{remote_ip}")
     # ('oracle2\n', '')  # success
     # ('', 'ubuntu@168.138.222.163: Permission denied (publickey).\n') failed
 

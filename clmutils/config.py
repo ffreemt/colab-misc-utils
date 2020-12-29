@@ -20,16 +20,16 @@ class Settings(BaseSettings):
         """Setting config."""
 
         # in colab  and drive mounted
+        env_file = ""
         _ = "/content/drive/MyDrive"
         if "google.colab" in sys.modules and Path(_).is_dir():
-            envfile = ""
             _ = "/content/drive/MyDrive/dotenv"
             if Path(_).is_file():
-                envfile = _
+                env_file = _
             elif Path("/content/drive/MyDrive/.env").is_file():
-                envfile = "/content/drive/MyDrive/.env"
-        
-        # neither exists, try cwd and upper
-        if not envfile:
+                env_file = "/content/drive/MyDrive/.env"
+
+        # neither exists, try .env in cwd and upper dirs
+        if not env_file:
             # env_file = ".env"
             env_file = dotenv.find_dotenv()

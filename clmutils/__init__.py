@@ -21,6 +21,6 @@ __all__ = (
     "gen_keypair",
     "setup_git",
     "setup_ssh_tunnel",
-    "checking_running",
+    "check_running",
     "Settings",
 )

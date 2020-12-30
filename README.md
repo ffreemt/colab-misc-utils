@@ -27,16 +27,18 @@ Or clone the repo `https://github.com/ffreemt/colab-misc-utils.git` in Colab/jup
     ```
     Do the usual `git pull`, amend codes and `git push` stuff.
 
+    For more on `Connecting to GitHub with SSH`, refer to  https://docs.github.com/cn/free-pro-team@latest/github/authenticating-to-github/connecting-to-github-with-ssh
+
 2. `setup_ssh_tunnel`
     * Run these lines in Colab
     ```python
-    from clmutils import setup_ssh_tunnel`, Settings
+    from clmutils import setup_ssh_tunnel, Settings
     config = Settings()
     setup_ssh_tunnel(
       remote_host=config.remote_host,
       remote_user=config.remote_user,
       priv_key=config.cl_key,
-      remote_pubkey=config.remote_pubkey,  # in colab ~/.ssh/authorized_keys
+      remote_pubkey=config.remote_pubkey
     )
     ```
 

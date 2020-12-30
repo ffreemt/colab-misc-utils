@@ -13,7 +13,7 @@ Or clone the repo `https://github.com/ffreemt/colab-misc-utils.git` in Colab/jup
 !pip install -r requirements.txt
 ```
 
-## Usage:  with a setting file `.env`
+## Usage:  with a setting file dotenv/`.env`
 
 1. `setup_git`
     ```python
@@ -28,17 +28,22 @@ Or clone the repo `https://github.com/ffreemt/colab-misc-utils.git` in Colab/jup
     Go the usual `git pull`, amend codes and `git push` stuff.
 
 2. `setup_ssh_tunnel`
+    * Run these lines in Colab
     ```python
-    from clmutils import setup_git, Settings
+    from clmutils import setup_ssh_tunnel`, Settings
     config = Settings()
-    setup_git(
-      user_name=config.user_name,
-      user_email=config.user_email,
-      priv_key=config.gh_key
+    setup_ssh_tunnel(
+      remote_host=config.remote_host,
+      remote_user=config.remote_user,
+      priv_key=config.cl_key,
+      remote_pubkey=config.remote_pubkey,  # in colab ~/.ssh/authorized_keys
     )
     ```
-    To use the reverse ssh tunnel, in the remote computer
-    ```
+
+    * Append the value of `cl_key_pub` in `dotenv/.env` (below) in remote computer's `~/.ssh/authorized_keys`.
+
+    * In the remote computer:
+    ```bash
     ssh colab
     ```
 
@@ -49,7 +54,7 @@ Or clone the repo `https://github.com/ffreemt/colab-misc-utils.git` in Colab/jup
       * gh_key: private key
       * user_name/user_email;
   * For reverse ssh tunnel:
-      * cl_key/cl_key_pub: private key/public key of Colab 
+      * cl_key/cl_key_pub: private key/public key of Colab
       * remote_pubkey: public_key of the remote computer
       * remote_user: login name
 
@@ -97,7 +102,7 @@ cl_key_pub = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIKVka3/2JsB32jG5Zx+5KOfDQRG5j
 remote_pubkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIE60sowZ4M0MA5nTGIH1RN54zERTuWSddFKqyeWZzaKv for-colab"
 ```
 
-## Usage: withtout a setting file `.env`
+## Usage: withtout dotenv/`.env`
 ### Set up `github` with ssh using `clmutils.setup_git`
 
 For manually setting up github with ssh, refer to

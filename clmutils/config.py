@@ -16,6 +16,8 @@ class Settings(BaseSettings):
     cl_key: str = ""
     cl_key_pub: str = ""
     gh_key: str = ""
+    user_name: str = ""
+    user_email: str = ""
 
     class Config:
         """Setting config."""

@@ -73,7 +73,7 @@ def setup_git(
             logger.error("%s: %s", arg, exc)
             raise SystemExit(exc)
         if not user_email:
-            raise SystemExit(f"Empty {arg}, cant cotinue")
+            raise SystemExit(f"Empty {arg}, cant continue")
         return arg
 
     if isinstance(priv_key, Path):
@@ -94,7 +94,7 @@ def setup_git(
         arg = check(arg)
 
     # attach a needed "\n"
-    priv_key += "\n"
+    priv_key = priv_key.strip() + "\n"
 
     if isinstance(identity_file, str):
         identity_file = identity_file.strip()

@@ -56,6 +56,7 @@ def gen_keypair(
             except Exception as exc:
                 logger.error(" dest_pub.read_text exc: %s", exc)
                 return "", ""
+            logger.info("public key:\n%s", pub_key)
             return pub_key, dest
 
         cmd = f"ssh-keygen -f {dest_str} -y"
@@ -68,6 +69,8 @@ def gen_keypair(
 
         if isinstance(pub_key, str):
             pub_key = pub_key.strip()
+
+        logger.info("public key:\n%s", pub_key)
         return "" if pub_key is None else pub_key, dest
 
         # return pub_key or ""
@@ -88,4 +91,6 @@ def gen_keypair(
 
     if isinstance(pub_key, str):
         pub_key = pub_key.strip()
+
+    logger.info("public key:\n%s", pub_key)
     return pub_key, dest_str

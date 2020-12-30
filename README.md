@@ -4,6 +4,7 @@ Miscellaneous utils mainly intended for use in colab
 ## Installation
 ```bash
 pip install clmutils  # clm: colab-misc
+# pip install clmutils -U to update
 ```
 Or clone the repo `https://github.com/ffreemt/colab-misc-utils.git` in Colab/jupyter:
 ```

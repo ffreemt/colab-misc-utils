@@ -105,7 +105,7 @@ Host colab
   IdentityFile ~/.ssh/id_rsa
   # or  IdentityFile ~/.ssh/for-colab-key
 """
-    logger.info("Pase this to remote computer's ~/.ssh/config\n%s", config_entry)
+    logger.info("Paste this to remote computer's ~/.ssh/config\n%s", config_entry)
 
     logger.info("In the remote computer, issue this command:\nssh colab")
 

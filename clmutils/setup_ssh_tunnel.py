@@ -73,11 +73,11 @@ def setup_ssh_tunnel(
     # !ssh -T ubuntu@{remote_ip} -o StrictHostKeyChecking=no hostname
 
     # try once, update ~/.ssh/known_hosts
-    out, err = run_cmd1(f"ssh -T ubuntu@{remote_ip} -o StrictHostKeyChecking=no hostname")
+    out, err = run_cmd1(f"ssh -nT ubuntu@{remote_ip} -o StrictHostKeyChecking=no -o BatchMode=yes Tested OK")
 
-    out, err = run_cmd1(f"ssh -T ubuntu@{remote_ip}")
-    # ('oracle2\n', '')  # success
-    # ('', 'ubuntu@168.138.222.163: Permission denied (publickey).\n') failed
+    out, err = run_cmd1(f"ssh -nT ubuntu@{remote_ip} Tested OK 2x")
+    # ('Tested OK 2x\n', ''): success
+    # ('', 'Permission denied (publickey).\n') failed
 
     if err:
         logger.warning("Colab->remote ssh Not properly setup: %s", err)

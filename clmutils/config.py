@@ -12,6 +12,7 @@ class Settings(BaseSettings):
 
     remote_host: str = ""
     remote_user: str = ""
+    remote_pubkey: str = ""
     cl_key: str = ""
     cl_key_pub: str = ""
     gh_key: str = ""

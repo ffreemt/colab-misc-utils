@@ -25,7 +25,7 @@ Or clone the repo `https://github.com/ffreemt/colab-misc-utils.git` in Colab/jup
       priv_key=config.gh_key
     )
     ```
-    Go the usual `git pull`, amend codes and `git push` stuff.
+    Do the usual `git pull`, amend codes and `git push` stuff.
 
 2. `setup_ssh_tunnel`
     * Run these lines in Colab

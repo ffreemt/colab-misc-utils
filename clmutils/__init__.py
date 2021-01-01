@@ -10,7 +10,8 @@ from .setup_ssh_tunnel import setup_ssh_tunnel  # noqa: F401
 from .check_running import check_running  # noqa: F401
 from .config import Settings  # noqa: F401
 
-__version__ = "0.1.4"
+__version__ = "0.1.5"
+VERSION = __version__.split(".")
 
 __all__ = (
     "create_file",

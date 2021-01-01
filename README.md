@@ -193,7 +193,7 @@ You are ready to clone your own repo, run your app and generate new data, update
 * :white_check_mark:  `reverse_ssh_tunnel`
  sets up a reverse ssh tunnel to a remote host with via autossh
 
-* Auxiliary  utils
+* Auxiliary utils
   * :white_check_mark: `create_file`
     creates a file with given mode, e.g. for `.ssh/id_rsa` or `IdentityFile` in `.ssh/config`
 

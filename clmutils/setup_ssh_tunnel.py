@@ -73,9 +73,9 @@ def setup_ssh_tunnel(
     # !ssh -T ubuntu@{remote_ip} -o StrictHostKeyChecking=no hostname
 
     # try once, update ~/.ssh/known_hosts
-    out, err = run_cmd1(f"ssh -nT ubuntu@{remote_ip} -o StrictHostKeyChecking=no -o BatchMode=yes Tested OK")
+    out, err = run_cmd1(f"ssh -nT ubuntu@{remote_ip} -o StrictHostKeyChecking=no -o BatchMode=yes echo Tested OK")
 
-    out, err = run_cmd1(f"ssh -nT ubuntu@{remote_ip} Tested OK 2x")
+    out, err = run_cmd1(f"ssh -nT ubuntu@{remote_ip} echo Tested OK 2x")
     # ('Tested OK 2x\n', ''): success
     # ('', 'Permission denied (publickey).\n') failed
 

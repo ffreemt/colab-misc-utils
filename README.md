@@ -49,7 +49,7 @@ Or clone the repo `https://github.com/ffreemt/colab-misc-utils.git` in Colab/jup
     ssh colab
     ```
 
-`clmutils.Setting` will look for `dotenv` or `.env` in `/content/drive/MyDrive` if google drive is momunted; otherwise it looks for `.env` in the current dir and parents dir.
+`clmutils.Setting` will look for `dotenv` or `.env` in `/content/drive/MyDrive` if google drive is momunted; otherwise it looks for `.env` in the current dir and parents dir. (Sample .env: [`.env.sample`](https://github.com/ffreemt/colab-misc-utils/blob/master/.env.sample))
 
 `dotenv/.env` basically contains the necessary information to setup git for github or ssh tunnel:
   * For git:

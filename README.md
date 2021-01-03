@@ -60,7 +60,7 @@ Or clone the repo `https://github.com/ffreemt/colab-misc-utils.git` in Colab/jup
       * remote_pubkey: public_key of the remote computer
       * remote_user: login name
 
-`dotenv/.env` is read by `clmutils.Settin` as follows
+`dotenv/.env` is read by `clmutils.Setting` as follows
 ```bash
 from clmutils import Settings
 config = Settings()
